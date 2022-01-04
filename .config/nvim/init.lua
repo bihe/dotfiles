@@ -1,0 +1,10 @@
+require "user.packer"
+require "user.base"
+require "user.uicustom"
+require "user.keymap"
+require "user.telescope"
+require "user.lsp"
+require "user.treesitter"
+require "user.golang"
+require "user.nvimtree"
+
