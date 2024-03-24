@@ -1,0 +1,12 @@
+require('options')
+require('keymaps')
+require('plugins')
+require('colorscheme')
+require('lsp')
+require('ts')
+require('telescope_settings')
+require('nvtree')
+
+require('style_lualine')
+require('style_webdevicons')
+require('config.autocmds')
