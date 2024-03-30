@@ -50,3 +50,18 @@ vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 
 vim.keymap.set('n', '<leader>tt', ':NvimTreeToggle<CR>', opts)
 
+-----------------
+-- Debugging   --
+-----------------
+
+vim.keymap.set('n', '<leader>db', ':DapToggleBreakpoint<CR>', opts)
+vim.keymap.set('n', '<leader>dr', ':lua require(\'dap\').continue()<CR>', opts)
+vim.keymap.set('n', '<C-r>', ':DapToggleRepl<CR>', opts)
+vim.keymap.set('n', '<leader>dt', ':lua require(\'dap-go\').debug_test()<CR>', opts)
+vim.keymap.set('n', '<F10>', ':DapStepOver<CR>', opts)
+vim.keymap.set('n', '<F11>', ':DapStepInto<CR>', opts)
+vim.keymap.set('n', '<F5>', ':DapContinue<CR>', opts)
+vim.keymap.set('n', '<leader>ds', ':lua dap_show_scopes_floating()<CR>', opts)
+vim.keymap.set('n', '<leader>df', ':lua dap_view_current_frames()<CR>', opts)
+vim.keymap.set('n', '<leader>dx', ':DapTerminate<CR>', opts)
+

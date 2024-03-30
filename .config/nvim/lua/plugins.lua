@@ -92,6 +92,27 @@ return require('packer').startup(function(use)
       },
     }
 
+    -- neotest: enable the relevant test-adapters
+    use({
+      "nvim-neotest/neotest",
+      requires = {
+        "nvim-neotest/nvim-nio",
+        "nvim-lua/plenary.nvim",
+        "antoinemadec/FixCursorHold.nvim",
+        "nvim-treesitter/nvim-treesitter",
+
+        -- neotest: test-adapters
+        
+        "nvim-neotest/neotest-go",
+        
+        -- TODO: Your other test adapters here
+      }
+    })
+
+    -- dap: debugger implementation via the Debug-Adapter-Protocol
+    use { 'mfussenegger/nvim-dap' }
+    use { 'leoluz/nvim-dap-go' }
+
     -- ------------------------------------------------------------------- --
     -- END OF custom plugins
     -- ------------------------------------------------------------------- --
