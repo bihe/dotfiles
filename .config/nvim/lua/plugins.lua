@@ -76,8 +76,13 @@ return require('packer').startup(function(use)
 
     -- lsp 
     use { 'williamboman/mason.nvim' }
-    use { 'williamboman/mason-lspconfig.nvim'}
-    use 'mfussenegger/nvim-jdtls'
+    use { 'williamboman/mason-lspconfig.nvim' }
+    use { 
+        'mfussenegger/nvim-jdtls',
+        requires = { 
+            'mfussenegger/nvim-dap', 
+        }
+    }
     use 'onsails/lspkind.nvim'
 
     -- icon style
@@ -106,18 +111,19 @@ return require('packer').startup(function(use)
         "antoinemadec/FixCursorHold.nvim",
         "nvim-treesitter/nvim-treesitter",
 
-        -- neotest: test-adapters
+        -- neotest: TODO test-adapters
         
         "nvim-neotest/neotest-go",
-        
-        -- TODO: Your other test adapters here
+        "rcasia/neotest-java",
       }
     })
 
     -- dap: debugger implementation via the Debug-Adapter-Protocol
     use { 'mfussenegger/nvim-dap' }
     use { 'leoluz/nvim-dap-go' }
-        -- ------------------------------------------------------------------- --
+
+
+    -- ------------------------------------------------------------------- --
     -- END OF custom plugins
     -- ------------------------------------------------------------------- --
 

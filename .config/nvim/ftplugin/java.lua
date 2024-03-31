@@ -155,9 +155,37 @@ local config = {
     -- Use the workspace_folder defined above to store data for this project
     '-data', workspace_folder,
   },
+
+}
+
+
+-- Language server `initializationOptions`
+-- You need to extend the `bundles` with paths to jar files
+-- if you want to use additional eclipse.jdt.ls plugins.
+--
+-- See https://github.com/mfussenegger/nvim-jdtls#java-debug-installation
+--
+-- If you don't plan on using the debugger or other eclipse.jdt.ls plugins you can remove this
+local bundles = {
+  vim.fn.glob("/Users/henrik/.local/share/java-debug/com.microsoft.java.debug.plugin*.jar", 1)
+};
+
+-- debug java unit tests 
+vim.list_extend(bundles, vim.split(vim.fn.glob("/Users/henrik/.local/share/vscode-java-test/*.jar", 1), "\n"))
+config['init_options'] = {
+  bundles = bundles;
 }
 
 -- Finally, start jdtls. This will run the language server using the configuration we specified,
 -- setup the keymappings, and attach the LSP client to the current buffer
 jdtls.start_or_attach(config)
+
+
+-----------------------------------------------------------------------------
+-- specific keymap for java debug 
+-----------------------------------------------------------------------------
+
+-- debug test
+vim.keymap.set('n', '<leader>dt', ':lua require\'jdtls\'.test_nearest_method()<CR>', opts)
+
 
