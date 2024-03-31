@@ -6,6 +6,7 @@ end
 
 local luasnip = require("luasnip")
 local cmp = require("cmp")
+local lspkind = require('lspkind')
 
 cmp.setup({
     snippet = {
@@ -55,23 +56,35 @@ cmp.setup({
       -- kind: single letter indicating the type of completion
       -- abbr: abbreviation of "word"; when not empty it is used in the menu instead of "word"
       -- menu: extra text for the popup menu, displayed after "word" or "abbr"
-      fields = { 'abbr', 'menu' },
+      --fields = { 'abbr', 'menu' },
 
       -- customize the appearance of the completion menu
-      format = function(entry, vim_item)
-          vim_item.menu = ({
-              nvim_lsp = '[Lsp]',
-              luasnip = '[Luasnip]',
-              buffer = '[File]',
-              path = '[Path]',
-          })[entry.source.name]
-          return vim_item
-      end,
+      --format = function(entry, vim_item)
+      --    vim_item.menu = ({
+      --        nvim_lsp = '[Lsp]',
+      --        luasnip = '[Luasnip]',
+      --        buffer = '[File]',
+      --        path = '[Path]',
+      --    })[entry.source.name]
+      --    return vim_item
+      --end,
+
+      format = lspkind.cmp_format({
+          mode = 'symbol_text',
+          --maxwidth = 50,
+          maxwidth = function() return math.floor(0.45 * vim.o.columns) end, 
+          ellipsis_char = '...',
+          before = function (_, vim_item)
+              return vim_item
+          end
+      }),
+
   },
 
   -- Set source precedence
   sources = cmp.config.sources({
       { name = 'nvim_lsp' },    -- For nvim-lsp
+      { name = 'nvim_lsp_signature_help' },
       { name = 'luasnip' },     -- For luasnip user
       { name = 'buffer' },      -- For buffer word completion
       { name = 'path' },        -- For path completion

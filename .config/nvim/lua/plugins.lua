@@ -44,13 +44,16 @@ return require('packer').startup(function(use)
     use { "rose-pine/neovim", name = "rose-pine" }
     use { "NLKNguyen/papercolor-theme", as = "papercolor" }
     use { "Mofiqul/vscode.nvim", as = "vscode" }
-
+    use { "Mofiqul/dracula.nvim", as = "dracula" }
+    use { "Shatur/neovim-ayu" }
+    
     -- telescope
     use {
       'nvim-telescope/telescope.nvim', tag = '0.1.6',
     -- or                            , branch = '0.1.x',
       requires = { {'nvim-lua/plenary.nvim'} }
     }
+    use 'nvim-lua/plenary.nvim'
 
     -- treesitter
     use {
@@ -74,6 +77,8 @@ return require('packer').startup(function(use)
     -- lsp 
     use { 'williamboman/mason.nvim' }
     use { 'williamboman/mason-lspconfig.nvim'}
+    use 'mfussenegger/nvim-jdtls'
+    use 'onsails/lspkind.nvim'
 
     -- icon style
     use { 'nvim-tree/nvim-web-devicons' }
@@ -112,8 +117,7 @@ return require('packer').startup(function(use)
     -- dap: debugger implementation via the Debug-Adapter-Protocol
     use { 'mfussenegger/nvim-dap' }
     use { 'leoluz/nvim-dap-go' }
-
-    -- ------------------------------------------------------------------- --
+        -- ------------------------------------------------------------------- --
     -- END OF custom plugins
     -- ------------------------------------------------------------------- --
 

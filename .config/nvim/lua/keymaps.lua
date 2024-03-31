@@ -51,6 +51,15 @@ vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 vim.keymap.set('n', '<leader>tt', ':NvimTreeToggle<CR>', opts)
 
 -----------------
+-- Testing     --
+-----------------
+
+vim.keymap.set('n', '<leader>tr', ':Neotest run<CR>', opts)
+vim.keymap.set('n', '<leader>ts', ':Neotest summary<CR>', opts)
+vim.keymap.set('n', '<leader>to', ':Neotest output<CR>', opts)
+vim.keymap.set('n', '<leader>tp', ':Neotest output-panel<CR>', opts)
+
+-----------------
 -- Debugging   --
 -----------------
 
