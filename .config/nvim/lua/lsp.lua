@@ -84,5 +84,5 @@ lspconfig.gopls.setup{
 }
 
 lspconfig.jdtls.setup{
-    on_attach = on_attack,
+    on_attach = on_attach,
 }
